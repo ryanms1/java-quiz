@@ -34,6 +34,12 @@ form input {
     font-size: 40px;
 }
 
+#answerCheck {
+    border-top: 1px solid grey;
+    text-align: left;
+    color:grey
+}
+
 #scoresList {
     text-align: left;
 }

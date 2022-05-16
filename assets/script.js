@@ -6,6 +6,7 @@ var ans3 = document.getElementById('answer3')
 var ans4 = document.getElementById('answer4')
 var question = document.getElementById('question')
 var start = document.getElementById("startquiz")
+var answerCheck = document.getElementById('answerCheck')
 var submitScore = document.getElementById('submitScore')
 var scoresButton = document.getElementById('scoresbutton')
 var userScore = document.getElementById('userScore')
@@ -83,12 +84,15 @@ ans3.addEventListener('click', () =>checkAnswer(2))
 ans4.addEventListener('click', () =>checkAnswer(3)) 
 
 function checkAnswer(selected) {
+    answerCheck.style.display = 'block'
     if (questions[currentQuestion].answer === questions[currentQuestion].answers[selected]) {
         score++ 
+        answerCheck.textContent = "Correct!"
     }
     else {
         timeRemaining -= 10
         time.textContent=timeRemaining
+        answerCheck.textContent = "Wrong!"
     }
 
     currentQuestion++
@@ -106,6 +110,7 @@ function checkAnswer(selected) {
 //quiz over
 function quizOver() {
     quiz.style.display = 'none'
+    answerCheck.style.display = 'none'
     submitScore.style.display = 'block'
     
     userScore.textContent = score + timeRemaining
@@ -124,20 +129,35 @@ function storeScore(event) {
 
     submitScore.style.display = 'none'
     
+    // get previously saved scores if any 
+    var savedScores = localStorage.getItem("high scores")
+    var userScores
+    if (savedScores === null) {
+        var userScores = []
+    }
+    else {
+        userScores = JSON.parse(savedScores)
+    }
+    
+
+    //add new score
     userScore = {initial: initials.value, score: userScore.textContent}
-
-    var userScores = []
-
     userScores.push(userScore)
 
+    //store score(s)
     localStorage.setItem("high scores", JSON.stringify(userScores))
 
     showScores();
 }
 
 function showScores() {
+    quiz.style.display = "none";
+    answerCheck.style.display = 'none'
+    submitScore.style.display = 'none'
     quizInfo.style.display = 'none'
     scoresList.style.display = 'block'
+
+    window.clearInterval()
 
     var savedScores = localStorage.getItem("high scores");
 console.log(savedScores)
@@ -147,9 +167,22 @@ console.log(storedScores)
     for (i = 0; i <= storedScores.length; i++) {
         var newScore = document.createElement('li')
         newScore.innerHTML = storedScores[i].initial + " - " + storedScores[i].score
-        console.log(newScore)
         list.appendChild(newScore)
     }
 }
 
-scoresButton.addEventListener('click', showScores)
+scoresButton.addEventListener('click', showScores) 
+
+// go back button 
+back.addEventListener('click', home)
+function home() {
+    location.reload()
+}
+
+// clear high scores
+clear.addEventListener('click', clearScores)
+
+function clearScores() {
+    window.localStorage.removeItem("high scores")
+    list.innerHTML = "No high scores available"
+}
