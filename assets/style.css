@@ -1,0 +1,74 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0px;
+}
+
+section {
+    text-align: center;
+    padding: 20px 50px;
+    margin: 0 auto;
+    width: 50%;
+}
+p {
+    font-size: 30px;
+}
+
+form {
+    font-size: 30px;
+}
+
+form input {
+    font-size: 25px;
+}
+
+.hide {
+    display:none;
+}
+
+#question {
+    font-size: 40px;
+}
+
+#scoresList {
+    text-align: left;
+}
+
+ul {
+    list-style:none;
+    width: 24%;
+}
+
+ol {
+    width:30%;
+    background-color: darkgray;
+    text-align: left;
+}
+
+li {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.btn {
+    background-color: blueviolet;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size:20px;
+    padding:5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color:darkslateblue;
+}
+
+.scorebtn:hover {
+    color:aquamarine;
+    cursor: pointer;
+    /* text-decoration: ; */
+}

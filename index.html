@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>JS Quiz</title>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h2 class="scorebtn" id="scoresbutton">View High Scores</h2>
+    </div>
+    <div>
+      <h2>Time: <span id="time"></span></h2>
+    </div>
+  </header>
+
+  <section>
+    <div id="quizinfo">
+      <h1>Coding Quiz Challenge</h1>
+      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      <span class="hover btn" id="startquiz">Start Quiz</span>
+    </div>
+    <div class="hide" id="quiz">
+      <h2 id="question"></h2>
+      <ul>
+        <li class="hover btn" id="answer1"></li>
+        <li class="hover btn" id="answer2"></li>
+        <li class="hover btn" id="answer3"></li>
+        <li class="hover btn" id="answer4"></li>
+      </ul>
+    </div>
+    <div class="hide" id="submitScore">
+      <h1>All done!</h1>
+      <p>Your final score is <span id="userScore"></span></p>
+      <form>
+        <label for="initials">Enter Initials:</label>
+        <input type="text" for="initials" id="initials">
+        <button class="hover btn" type="submit" id="submit">submit</button>
+      </form>
+    </div>
+    <div class="hide" id="scoresList">
+      <h1>High Scores</h1>
+      <ol id="list">
+      </ol>
+      <span class="hover btn" id="back">Go back</span>
+      <span class="hover btn" id="clear">Clear high scores</span>
+    </div>
+  </section>
+
+  <script src="./assets/script.js"></script>
+</body>
+</html>
